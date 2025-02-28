@@ -18,6 +18,12 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
+		data.mlx = mlx_init();
+		if (!data.mlx)
+		{
+			perror("Error\nprogram initialization failed\n");
+			exit(1);
+		}
 		create_map(argv[1], &data);
 		init_map(&data);
 		check_map(&data);

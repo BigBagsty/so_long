@@ -13,7 +13,7 @@
 NAME = so_long
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
-MLX_FLAGS = -L./mlx-linux -lmlx -lX11 -lXext -lm
+MLX_FLAGS = -L./mlx-linux -lX11 -lXext -lm
 SRCS_DIR = srcs/
 SOURCES = checks/error.c \
 		  checks/map_check.c \
@@ -59,3 +59,8 @@ clean:
 	make -C $(MLX_PATH) clean
 	make -C $(LIBFT_PATH) clean
 	rm -f $(OBJECTS) $(GNL_OBJS)
+
+fclean:
+	make -C $(MLX_PATH) clean
+	make -C $(LIBFT_PATH) fclean
+	rm -f $(NAME)
