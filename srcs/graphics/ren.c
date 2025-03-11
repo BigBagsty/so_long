@@ -27,8 +27,10 @@ void	chars(t_data *data, int width, int i, int j)
 		mlx_put_image_to_window(data->mlx, data->win, data->img.exit_l,
 			width, i * IMG_SIZE);
 	else if (data->map.map[i][j] == 'C')
+	{
 		mlx_put_image_to_window(data->mlx, data->win, data->img.coin,
 			width, i * IMG_SIZE);
+	}
 }
 
 int	render(t_data *data)

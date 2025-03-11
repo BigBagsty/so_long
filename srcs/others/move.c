@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2025/01/14 19:23:30 by marvin            #+#    #+#             */
 /*   Updated: 2025/01/14 19:23:30 by marvin           ###   ########.fr       */
 /*                                                                            */
@@ -12,13 +15,14 @@
 
 #include "../lib/so_long.h"
 
+
 int	check_next_tile(t_data *data, char direction, char tile)
 {
 	if ((direction == 'd' && data->map.map[data->p_i][data->p_j + 1] == tile)
 		|| (direction == 'a' && data->map.map[data->p_i][data->p_j - 1] == tile)
 		|| (direction == 's' && data->map.map[data->p_i + 1][data->p_j] == tile)
-		|| (direction == 'w' && data->map.map[data->p_i - 1][data->p_j] == tile)
-		)
+		|| (direction == 'w' && data->map.map[data->p_i
+			- 1][data->p_j] == tile))
 		return (0);
 	else
 		return (1);
@@ -29,7 +33,8 @@ void	collect_coins(t_data *data, char direction)
 	if ((direction == 'd' && data->map.map[data->p_i][data->p_j + 1] == 'C')
 		|| (direction == 'a' && data->map.map[data->p_i][data->p_j - 1] == 'C')
 		|| (direction == 's' && data->map.map[data->p_i + 1][data->p_j] == 'C')
-		|| (direction == 'w' && data->map.map[data->p_i - 1][data->p_j] == 'C'))
+		|| (direction == 'w' && data->map.map[data->p_i- 1][data->p_j] == 'C')
+		)
 		data->map.collected++;
 }
 
@@ -47,8 +52,7 @@ int	win_game(t_data *data)
 
 void	move_player(t_data *data, char direction)
 {
-	if (check_next_tile(data, direction, '1') == 0
-		|| (data->map.can_exit == 0
+	if (check_next_tile(data, direction, '1') == 0 || (data->map.can_exit == 0
 			&& check_next_tile(data, direction, 'E') == 0))
 		return ;
 	data->steps_count++;

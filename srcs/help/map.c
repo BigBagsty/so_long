@@ -36,7 +36,7 @@ int	retrieve_line_number(char *path)
 	line_count = 0;
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		printf("\e[31mError: open failed\e[0m\n");
+		ft_putstr_fd("Error: Cant open\n", 1);
 	else
 	{
 		line = get_next_line(fd);
@@ -86,9 +86,11 @@ void	create_map(char *path, t_data *data)
 	data->map.map = ft_calloc(data->map.line_count + 1, sizeof(char *));
 	if (!(data->map.map))
 		return ;
+	if (!ft_strnstr(&path[ft_strlen(path) - 4], ".ber\0", 4))
+		ft_error(data, "Error: Invalid map");
 	data->map.fd = open(path, O_RDONLY);
 	if (data->map.fd < 0)
-		printf("\e[31mError: open failed\e[0m\n");
+		ft_error(data, "Error: Invalid map");
 	else
 	{
 		put_input_in_map(row, column, i, data);

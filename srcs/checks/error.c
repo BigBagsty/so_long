@@ -12,12 +12,16 @@
 
 #include "../lib/so_long.h"
 
-void ft_error(t_data *data)
+void ft_error(t_data *data, char *error)
 {
-    if(data->map.map)
-    {
-        ft_free(data->map.map);
-    }
-    ft_putstr_fd("error\n", 2);
-    exit(1);
+	if (!data)
+		exit(1);
+	if(data->map.map)
+	{
+		ft_free(data->map.map);
+	}
+	ft_putstr_fd("error:", 2);
+	ft_putstr_fd(error, 2);
+	ft_putstr_fd("\n", 2);
+	exit(1);
 }
