@@ -32,7 +32,7 @@
 # define WALL "textures/wall.xpm"
 # define GROUND "textures/ground.xpm"
 # define COIN "textures/coin.xpm"
-# define IMG_SIZE 48
+# define IMG_SIZE 30
 
 typedef struct s_map
 {
@@ -46,6 +46,8 @@ typedef struct s_map
 	char	**map;
 	int		can_exit;
 	int		collected;
+	int		co;
+	int		exit_r;
 
 }				t_map;
 
@@ -79,13 +81,20 @@ typedef struct s_data
 
 }				t_data;
 
+int		ft_check(char *av);
 int		retrieve_line_number(char *path);
 void	create_map(char *path, t_data *data);
 void	put_input_in_map(int row, int column, int i, t_data *data);
 void	ft_free(char **tab);
-void 	ft_error(t_data *data);
+void	ft_error(t_data *data, char *error);
 void	init_map(t_data *data);
 void	init_player(t_data *data);
+int		is_valid_move(t_data *data, int **visited, int row, int col);
+void	flood_fill(t_data *data, int row, int col, int **visited);
+void	find_player_position(t_data *data, int *p_row, int *p_col);
+int		allocate_visited(t_data *data, int ***visited);
+int		validate_coins(t_data *data);
+int		check_path(t_data *data);
 int		check_map(t_data *data);
 int		check_chars(t_data *data);
 int		check_rectangle(t_data *data);

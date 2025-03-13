@@ -6,7 +6,7 @@
 /*   By: fragarc2 <fragarc2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:06:46 by fragarc2          #+#    #+#             */
-/*   Updated: 2024/05/23 17:20:13 by fragarc2         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:16:09 by fragarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,3 @@ char	*ft_itoa(int n)
 	}
 	return (str);
 }
-
-/*
-void	ft_print_result(char const *s)
-{
-	int	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	write(1, s, len);
-}
-*/
-
