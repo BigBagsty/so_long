@@ -16,7 +16,9 @@ CFLAGS = -Wall -Werror -Wextra -g
 MLX_FLAGS = -L./mlx-linux -lX11 -lXext -lm
 SRCS_DIR = srcs/
 SOURCES = checks/error.c \
+		  checks/check.c \
 		  checks/map_check.c \
+		  checks/path.c \
           graphics/ren.c \
           graphics/utils.c \
           help/innit_map.c \
@@ -63,4 +65,7 @@ clean:
 fclean:
 	make -C $(MLX_PATH) clean
 	make -C $(LIBFT_PATH) fclean
+	rm -f $(OBJECTS) $(GNL_OBJS)
 	rm -f $(NAME)
+
+re: fclean all

@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: fragarc2 <fragarc2@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: fragarc2 <fragarc2@student.42.fr>          +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2025/03/06 12:16:33 by fragarc2          #+#    #+#             */
 /*   Updated: 2025/03/06 12:16:33 by fragarc2         ###   ########.fr       */
 /*                                                                            */
@@ -29,7 +32,8 @@ int	check_chars(t_data *data)
 		data->j = 0;
 		data->i++;
 	}
-	if (!data->map.count_c || !data->map.count_e || !data->map.count_p)
+	if (!data->map.count_c || !data->map.count_e || !data->map.count_p
+		|| data->map.count_e > 1 || data->map.count_p > 1)
 		return (1);
 	else
 		return (0);
@@ -54,8 +58,7 @@ int	check_edges(int line_count, char **map)
 	int	i;
 
 	i = 1;
-	if (check_top_bot(0, map) == 1
-		|| check_top_bot(line_count, map) == 1)
+	if (check_top_bot(0, map) == 1 || check_top_bot(line_count, map) == 1)
 		return (1);
 	while (i < line_count)
 	{
@@ -98,19 +101,19 @@ int	check_map(t_data *data)
 		while (j < ft_strlen(data->map.map[i]) - 1)
 		{
 			if (ft_strchr("01CEP", data->map.map[i][j]) == NULL)
-				ft_error(data, "Invalid character usage");
+				ft_error(data, "Invalid character usage.");
 			j++;
 		}
 		j = 0;
 		i++;
 	}
 	if (check_chars(data) == 1)
-		ft_error(data, "Invalid number of variables");
+		ft_error(data, "Invalid number of variables.");
 	if (check_rectangle(data) == 1)
-		ft_error(data, "Invalid map form");
+		ft_error(data, "Invalid map form.");
 	if (check_edges(data->map.line_count - 1, data->map.map) == 1)
-		ft_error(data, "Invalid wall placement");
-	if (validate_coins(data) == 0)
-		ft_error(data, "No valid path to tokens");
+		ft_error(data, "Invalid wall placement.");
+	if (!validate_coins(data))
+		ft_error(data, "No valid path to tokens.");
 	return (0);
 }

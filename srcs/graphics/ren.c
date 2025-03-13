@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ren.c                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2025/01/13 17:43:14 by marvin            #+#    #+#             */
 /*   Updated: 2025/01/13 17:43:14 by marvin           ###   ########.fr       */
 /*                                                                            */
@@ -15,21 +18,21 @@
 void	chars(t_data *data, int width, int i, int j)
 {
 	if (data->map.map[i][j] == '1')
-		mlx_put_image_to_window(data->mlx, data->win, data->img.wall,
-			width, i * IMG_SIZE);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.wall, width, i
+			* IMG_SIZE);
 	else if (data->map.map[i][j] == '0')
-		mlx_put_image_to_window(data->mlx, data->win, data->img.ground,
-			width, i * IMG_SIZE);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.ground, width, i
+			* IMG_SIZE);
 	else if (data->map.map[i][j] == 'P')
-		mlx_put_image_to_window(data->mlx, data->win, data->img.player,
-			width, i * IMG_SIZE);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.player, width, i
+			* IMG_SIZE);
 	else if (data->map.map[i][j] == 'E')
-		mlx_put_image_to_window(data->mlx, data->win, data->img.exit_l,
-			width, i * IMG_SIZE);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.exit_l, width, i
+			* IMG_SIZE);
 	else if (data->map.map[i][j] == 'C')
 	{
-		mlx_put_image_to_window(data->mlx, data->win, data->img.coin,
-			width, i * IMG_SIZE);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.coin, width, i
+			* IMG_SIZE);
 	}
 }
 

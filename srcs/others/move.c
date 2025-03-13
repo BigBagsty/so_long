@@ -15,7 +15,6 @@
 
 #include "../lib/so_long.h"
 
-
 int	check_next_tile(t_data *data, char direction, char tile)
 {
 	if ((direction == 'd' && data->map.map[data->p_i][data->p_j + 1] == tile)
@@ -33,8 +32,8 @@ void	collect_coins(t_data *data, char direction)
 	if ((direction == 'd' && data->map.map[data->p_i][data->p_j + 1] == 'C')
 		|| (direction == 'a' && data->map.map[data->p_i][data->p_j - 1] == 'C')
 		|| (direction == 's' && data->map.map[data->p_i + 1][data->p_j] == 'C')
-		|| (direction == 'w' && data->map.map[data->p_i- 1][data->p_j] == 'C')
-		)
+		|| (direction == 'w' && data->map.map[data->p_i
+			- 1][data->p_j] == 'C'))
 		data->map.collected++;
 }
 

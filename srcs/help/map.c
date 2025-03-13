@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2025/01/06 13:29:56 by marvin            #+#    #+#             */
 /*   Updated: 2025/01/06 13:29:56 by marvin           ###   ########.fr       */
 /*                                                                            */
@@ -17,14 +20,14 @@ void	ft_free(char **tab)
 	size_t	i;
 
 	i = 0;
+	if (!tab)
+		return ;
 	while (tab[i])
 	{
 		free(tab[i]);
 		i++;
 	}
 	free(tab);
-	tab = NULL;
-	return ;
 }
 
 int	retrieve_line_number(char *path)
@@ -87,13 +90,15 @@ void	create_map(char *path, t_data *data)
 	if (!(data->map.map))
 		return ;
 	if (!ft_strnstr(&path[ft_strlen(path) - 4], ".ber\0", 4))
-		ft_error(data, "Error: Invalid map");
+		ft_error(data, "Invalid \"ber\" file.");
 	data->map.fd = open(path, O_RDONLY);
 	if (data->map.fd < 0)
-		ft_error(data, "Error: Invalid map");
+		ft_error(data, "Invalid map.");
 	else
 	{
 		put_input_in_map(row, column, i, data);
 		close(data->map.fd);
 	}
+	data->win_height = data->map.line_count * IMG_SIZE;
+	data->win_width = (ft_strlen(data->map.map[0]) - 1) * IMG_SIZE;
 }
